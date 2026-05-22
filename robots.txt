@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://pdf-maker-lovat.vercel.app/sitemap.xml
