@@ -427,7 +427,7 @@ function drawCoverPage(doc, pageW, pageH, marginMm) {
   doc.setFont('helvetica', 'normal');
   doc.setFontSize(9);
   doc.setTextColor(71, 85, 105);          // --text-secondary
-  doc.text('Prepared using Neat PDF Maker · neatpdfmaker.app', cx, titleY + 28, { align: 'center' });
+  doc.text('Prepared using Neat PDF Maker · neatpdfmaker.com', cx, titleY + 28, { align: 'center' });
 
   // ── Divider ───────────────────────────────────────────────────────────────
   const dividerY = titleY + 50;
@@ -496,7 +496,7 @@ function drawCoverPage(doc, pageW, pageH, marginMm) {
   doc.setFont('helvetica', 'normal');
   doc.setFontSize(7.5);
   doc.setTextColor(191, 219, 254);
-  doc.text('This document was generated using Neat PDF Maker · 100% Private · No data uploaded', cx, pageH - 8, { align: 'center' });
+  doc.text('This document was generated using Neat PDF Maker · neatpdfmaker.com · 100% Private · No data uploaded', cx, pageH - 8, { align: 'center' });
 
   // ── Outer border on full page ──────────────────────────────────────────────
   doc.setDrawColor(226, 232, 240);

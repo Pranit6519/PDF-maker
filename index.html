@@ -60,13 +60,6 @@
       "price": "0",
       "priceCurrency": "INR"
     },
-    "aggregateRating": {
-      "@type": "AggregateRating",
-      "ratingValue": "4.9",
-      "reviewCount": "1240",
-      "bestRating": "5",
-      "worstRating": "1"
-    },
     "featureList": [
       "Convert JPG, PNG, WEBP images to PDF",
       "Standard A4 format PDF",
@@ -355,6 +348,72 @@
       </div>
     </section>
 
+    <!-- Step 2: Preview -->
+    <section class="card hidden" id="preview-card">
+      <div class="preview-header">
+        <div class="section-label" style="margin-bottom:0">
+          <div class="section-num">2</div>
+          <div>
+            <div class="section-title">Preview & Arrange Pages</div>
+            <div class="section-desc">Drag to reorder · Click × to remove</div>
+          </div>
+        </div>
+        <div class="preview-actions">
+          <button class="btn-ghost" id="clear-all-btn" aria-label="Clear all images">Clear All</button>
+          <button class="btn-ghost btn-add" id="add-more-btn" aria-label="Add more images">+ Add More</button>
+        </div>
+      </div>
+
+      <div class="image-grid" id="image-grid" role="list" aria-label="Uploaded images list"></div>
+
+      <div class="page-count-row">
+        <span class="page-count-label" id="page-count-label">0 image(s) → 0 page(s) in PDF</span>
+      </div>
+    </section>
+
+    <!-- Step 3: Generate -->
+    <section class="generate-section" id="generate-section">
+      <div class="section-label" style="justify-content:center; margin-bottom:16px;">
+        <div class="section-num">3</div>
+        <div>
+          <div class="section-title">Generate & Download PDF</div>
+          <div class="section-desc">Built entirely in your browser — nothing is uploaded</div>
+        </div>
+      </div>
+
+      <div class="generate-note">
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none">
+          <rect x="3" y="11" width="18" height="11" rx="2" ry="2" stroke="#94a3b8" stroke-width="2"/>
+          <path d="M7 11V7a5 5 0 0 1 10 0v4" stroke="#94a3b8" stroke-width="2" stroke-linecap="round"/>
+        </svg>
+        PDF is generated on your device. No internet required after first load.
+      </div>
+
+      <button class="btn-generate" id="generate-btn" aria-label="Generate and download PDF" disabled>
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
+          <path d="M12 15V3m0 12l-4-4m4 4l4-4" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+          <path d="M3 15v4a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-4" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+        <span id="generate-btn-text">Generate PDF</span>
+      </button>
+
+      <!-- Progress -->
+      <div class="progress-wrap hidden" id="progress-wrap">
+        <div class="progress-bar-track">
+          <div class="progress-bar-fill" id="progress-bar-fill"></div>
+        </div>
+        <p class="progress-label" id="progress-label">Processing images…</p>
+      </div>
+
+      <!-- Success -->
+      <div class="success-wrap hidden" id="success-wrap">
+        <div class="success-icon">✅</div>
+        <h3 class="success-title">PDF Ready!</h3>
+        <p class="success-sub" id="success-sub">Your PDF has been downloaded.</p>
+        <button class="btn-secondary" id="make-another-btn">Make Another PDF</button>
+      </div>
+    </section>
+
     <!-- Assignment Mode -->
     <section class="card" id="assignment-card">
       <div class="assignment-header">
@@ -453,72 +512,6 @@
       </div>
     </section>
 
-    <!-- Step 2: Preview -->
-    <section class="card hidden" id="preview-card">
-      <div class="preview-header">
-        <div class="section-label" style="margin-bottom:0">
-          <div class="section-num">2</div>
-          <div>
-            <div class="section-title">Preview & Arrange Pages</div>
-            <div class="section-desc">Drag to reorder · Click × to remove</div>
-          </div>
-        </div>
-        <div class="preview-actions">
-          <button class="btn-ghost" id="clear-all-btn" aria-label="Clear all images">Clear All</button>
-          <button class="btn-ghost btn-add" id="add-more-btn" aria-label="Add more images">+ Add More</button>
-        </div>
-      </div>
-
-      <div class="image-grid" id="image-grid" role="list" aria-label="Uploaded images list"></div>
-
-      <div class="page-count-row">
-        <span class="page-count-label" id="page-count-label">0 image(s) → 0 page(s) in PDF</span>
-      </div>
-    </section>
-
-    <!-- Step 3: Generate -->
-    <section class="generate-section" id="generate-section">
-      <div class="section-label" style="justify-content:center; margin-bottom:16px;">
-        <div class="section-num">3</div>
-        <div>
-          <div class="section-title">Generate & Download PDF</div>
-          <div class="section-desc">Built entirely in your browser — nothing is uploaded</div>
-        </div>
-      </div>
-
-      <div class="generate-note">
-        <svg width="13" height="13" viewBox="0 0 24 24" fill="none">
-          <rect x="3" y="11" width="18" height="11" rx="2" ry="2" stroke="#94a3b8" stroke-width="2"/>
-          <path d="M7 11V7a5 5 0 0 1 10 0v4" stroke="#94a3b8" stroke-width="2" stroke-linecap="round"/>
-        </svg>
-        PDF is generated on your device. No internet required after first load.
-      </div>
-
-      <button class="btn-generate" id="generate-btn" aria-label="Generate and download PDF" disabled>
-        <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
-          <path d="M12 15V3m0 12l-4-4m4 4l4-4" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
-          <path d="M3 15v4a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-4" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
-        </svg>
-        <span id="generate-btn-text">Generate PDF</span>
-      </button>
-
-      <!-- Progress -->
-      <div class="progress-wrap hidden" id="progress-wrap">
-        <div class="progress-bar-track">
-          <div class="progress-bar-fill" id="progress-bar-fill"></div>
-        </div>
-        <p class="progress-label" id="progress-label">Processing images…</p>
-      </div>
-
-      <!-- Success -->
-      <div class="success-wrap hidden" id="success-wrap">
-        <div class="success-icon">✅</div>
-        <h3 class="success-title">PDF Ready!</h3>
-        <p class="success-sub" id="success-sub">Your PDF has been downloaded.</p>
-        <button class="btn-secondary" id="make-another-btn">Make Another PDF</button>
-      </div>
-    </section>
-
     <!-- Trust Signals -->
     <section class="trust-section">
       <div class="trust-section-title">Why Students Trust Neat PDF Maker</div>
@@ -603,12 +596,12 @@
         <img src="ChatGPT_Image_May_22__2026__12_53_36_AM-removebg-preview.png" alt="Neat PDF Maker" class="footer-logo-img" />
       </div>
       <div class="footer-links">
-        <a href="#" class="footer-link">How It Works</a>
-        <a href="#" class="footer-link">Privacy</a>
-        <a href="#" class="footer-link">Contact</a>
+        <a href="#converter" class="footer-link">How It Works</a>
+        <a href="#faq" class="footer-link">Privacy</a>
+        <a href="mailto:support@neatpdfmaker.com" class="footer-link">Contact</a>
       </div>
       <p class="footer-copy">
-        © 2025 Neat PDF Maker · Free forever · Works entirely in your browser · No data collected
+        © 2026 Neat PDF Maker · Free forever · Works entirely in your browser · No data collected
       </p>
     </div>
   </footer>
